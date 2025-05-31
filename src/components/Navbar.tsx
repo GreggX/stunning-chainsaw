@@ -1,35 +1,36 @@
 import React from "react";
+import useScroll from "../hooks/useScroll";
 
 interface NavbarProps {
   title: string | React.ReactNode;
   ctaText: string;
   onCtaClick: () => void;
+  children?: React.ReactNode;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   title,
   ctaText,
   onCtaClick,
+  children,
 }) => {
-  return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <span className="navbar-item">{title}</span>
-        <button className="button is-primary" onClick={onCtaClick}>
-          {ctaText}
-        </button>
-        <h1 className="">My Application</h1>
-      </div>
+  const scrollPosition = useScroll();
 
-      <div className="navbar-menu">
-        <div className="navbar-start">
-          <a className="navbar-item" href="#home">Inicio</a>
-          <a className="navbar-item" href="#about">Sobre nosotros</a>
-          <a className="navbar-item" href="#contact">Contactanos</a>
+  return (
+    <nav className={`navbar ${scrollPosition > 50 ? 'navbar-fixed' : ''}`}>
+      <div className="navbar-container">
+        <div className="navbar-brand">
+          <span className="navbar-item">{title}</span>
         </div>
-        <div className="navbar-end">
-          <a className="navbar-item" href="#login">Login</a>
-          <a className="navbar-item" href="#signup">Sign Up</a>
+
+        <div className="navbar-menu">
+          {children && (children)}
+        </div>
+
+        <div className="navbar-footer">
+          <button className="button is-primary" onClick={onCtaClick}>
+            {ctaText}
+          </button>
         </div>
       </div>
     </nav>

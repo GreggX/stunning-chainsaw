@@ -1,4 +1,27 @@
+/* Navbar styles */
 .navbar {
-  background-color: #333;
-  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+  width: 100%;
+}
+
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: auto;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
 }
