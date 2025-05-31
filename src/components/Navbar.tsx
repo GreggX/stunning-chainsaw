@@ -1,5 +1,6 @@
 import React from "react";
 import useScroll from "../hooks/useScroll";
+import Button from "./Button";
 
 interface NavbarProps {
   title: string | React.ReactNode;
@@ -20,7 +21,11 @@ export const Navbar: React.FC<NavbarProps> = ({
     <nav className={`navbar ${scrollPosition > 50 ? 'navbar-fixed' : ''}`}>
       <div className="navbar-container">
         <div className="navbar-brand">
-          <span className="navbar-item">{title}</span>
+          <span className="navbar-title">{
+            typeof title === 'string'
+              ? title.toUpperCase()
+              : <>{title}</>
+          }</span>
         </div>
 
         <div className="navbar-menu">
@@ -28,9 +33,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <div className="navbar-footer">
-          <button className="button is-primary" onClick={onCtaClick}>
-            {ctaText}
-          </button>
+          <Button
+            label={ctaText}
+            onClick={onCtaClick}
+            variant="secondary"
+          />
         </div>
       </div>
     </nav>
