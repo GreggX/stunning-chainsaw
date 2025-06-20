@@ -2,9 +2,10 @@ import { Navbar } from './components/Navbar'
 import { Link } from './components/Link'
 
 import './App.css'
+import Landing from './views/Landing'
 
 function App() {
-  return (
+  return (<>
     <Navbar
       ctaText="Get Started"
       onCtaClick={() => alert('CTA Clicked!')}
@@ -14,6 +15,8 @@ function App() {
       <Link>Sobre nosotros</Link>
       <Link>Contactanos</Link>
     </Navbar>
+    <Landing />
+  </>
   )
 }
 
